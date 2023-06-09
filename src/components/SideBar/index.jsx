@@ -9,7 +9,7 @@ export default function SideBar() {
     <ListGroup as="ol" className="opacity-50 w-25 position-absolute"style={{left:"75%",top:"25%"}}>
       {
         info.map((e, index) => (
-          <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light ">
+          <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light " key={e.id}>
             <Figure className="my-0">
               <Figure.Image
                 width={70}

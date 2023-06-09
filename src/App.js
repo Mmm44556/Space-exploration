@@ -1,4 +1,4 @@
-
+import React, { StrictMode } from 'react';
 import Navs from "./components/Navigation";
 import Content from "./components/Content";
 import Nebula from "./components/Nebula";
@@ -9,11 +9,12 @@ import './App.css'
 function App() {
   return (
     <div className='App-Container' id="About">
-
-      <Navs />
-      <Nebula />
-      <Content />
-      <Footer/>
+      <StrictMode>
+        <Navs />
+        <Nebula />
+        <Content />
+      </StrictMode>
+      <Footer />
     </div>
 
   );

@@ -27,7 +27,7 @@ export default function Content() {
 
           </Col>
           <Col xs={12} md={6} xl={2} >
-            <SideBar />
+            {/* <SideBar /> */}
           </Col>
         </Row>
       <Row>
