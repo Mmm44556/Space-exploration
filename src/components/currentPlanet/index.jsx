@@ -2,18 +2,15 @@ import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
 import { SwiperSlide } from "swiper/react";
-import { Navigation, Keyboard, Controller } from 'swiper';
+import { Navigation, Keyboard } from 'swiper';
 import { Swiper, useSwiper } from 'swiper/react';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { footerImg } from "./msg";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
-
-export default function Footer() {
-
-  const [controlledSwiper, setControlledSwiper] = useState(null);
+const CurrentPlanets = (props) => {
+  const { slideStyle, imgStyle, showBtn, views } = props.slide;
   const [imgs] = useState(() => footerImg());
   let swiper = useSwiper();
   const SwiperButtons = () => {
@@ -23,6 +20,7 @@ export default function Footer() {
       zIndex: "1"
     }
     let swiper = useSwiper();
+    console.log(swiper, '我是')
     return ([
       <Button variant="outline-none position-absolute  " style={{ ...paras, right: "5%" }} onClick={() => swiper.slideNext()} >
         <BsFillArrowRightCircleFill className="fs-1" />
@@ -33,66 +31,36 @@ export default function Footer() {
     ])
   };
 
-
   return (
-    < >
-
-      <Swiper modules={[Keyboard, Navigation, Controller]}
-        className="mySwiper w-50  position-absolute  start-50 bouncedUp "
-        style={{ transform: "translate(-50%)", zIndex: "2" }}
-        slidesPerView={3}
+    <>
+      <Swiper modules={[Keyboard, Navigation]}
+        className="mySwiper w-50  position-absolute z-2 start-50  bouncedUp "
+        style={{ transform: "translate(-50%)" }}
+        slidesPerView={views}
         spaceBetween={30}
         keyboard={{
           enabled: true,
         }}
         loop={true}
         loopedSlides={2}
-
-
-
-        controller={{ control: controlledSwiper }}
       >
         {
           imgs.map((e) =>
             <SwiperSlide className="text-center " key={e.id} >
-              <div className="floating" style={{ height: '200px' }}>
-                <LazyLoadImage src={e.img} className="opacity-50 floating  " effect="blur" style={{ width: '30%', WebkitBoxReflect: " right -100px -webkit-linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, .3))" }}
+              <div className="floating" style={slideStyle}>
+                <LazyLoadImage src={e.img} className="opacity-50 floating  " effect="blur" style={imgStyle}
                 />
               </div>
             </SwiperSlide>
           )
         }
         <SwiperButtons />
+
+
       </Swiper>
-
-      <Swiper
-        modules={[Controller]}
-        className="mySwiper  w-100 position-absolute  bg start-50"
-        style={{ transform: "translate(-50%)", height: "40%", zIndex: "1", bottom: "0%" }}
-        slidesPerView={3}
-        enabled={false}
-        loop={true}
-        loopedSlides={2}
-        onSwiper={setControlledSwiper}
-      >
-        {
-          imgs.map((e) =>
-            <SwiperSlide className="text-center  " key={e.id} >
-             
-                <LazyLoadImage src={e.img} className="opacity-75  " effect="blur" style={{ width: '0%' }}
-                />
-              
-            </SwiperSlide>
-          )
-
-        }
-      </Swiper>
-
-
 
     </>
-
-
-
   )
 }
+
+export default CurrentPlanets

@@ -35,10 +35,10 @@ body {
   border: 1px rgb(159, 147, 147) solid;
   position: absolute;
   right: -30%;
-  top:-200px;
+  top: -200px;
   transform: translate(-50%, -50%);
   animation: carousel 60s linear infinite backwards;
-  /* animation-play-state: paused; */
+  animation-play-state: paused;
 
 
 }
@@ -62,8 +62,8 @@ body {
   height: 50%;
   border-radius: 100%;
   transform: scale(5) translate(0%, 50%);
-  /* visibility: hidden; */
-  animation: shine 60s ease-in infinite backwards;
+  visibility: hidden;
+  /* animation: shine 60s ease-in infinite backwards; */
   /* animation-play-state: paused; */
 
 
@@ -154,23 +154,83 @@ body {
 }
 
 /* Footer */
-.floating{
+.floating {
   transform: translateX(-4px);
   animation: bounce 4s ease-in-out infinite both;
-}
-.footerBox div:nth-child(5)>img{
-  width: 65% !important;; 
 }
 
 
 @keyframes bounce {
-  0%{
+  0% {
     transform: translateX(-4px);
   }
-  50%, 100%{
+
+  50%,
+  100% {
     /* transform: translateY(0); */
   }
-  75%{
+
+  75% {
     transform: translateY(4px);
+  }
+}
+
+.swiper-slide-next .blur>img {
+  animation: zoomIn 0.3s 1 ease-in-out forwards;
+
+
+}
+
+.bg .swiper-slide-next .blur>img {
+  /* border: 1px solid red; */
+  width: 100% !important;
+}
+
+.bg .swiper-slide-next .blur {
+  width: 300%;
+  transform: translate(-30%);
+}
+
+
+
+@keyframes zoomIn {
+
+  from {
+    width: 32%;
+  }
+
+  to {
+    width: 60%;
+  }
+}
+
+.bouncedUp {
+  bottom: -50%;
+  animation: fadeIn 1s ease 3 forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    bottom: -50%;
+  }
+
+  15% {
+    bottom: -40%;
+  }
+
+  25% {
+    bottom: -30%;
+  }
+
+  50% {
+    bottom: -20%;
+  }
+
+  75% {
+    bottom: -10%;
+  }
+
+  100% {
+    bottom: 0%;
   }
 }
