@@ -10,6 +10,13 @@ import Molecule from './Molecule.jpg'
 import Network from './Network.jpg'
 import Shadow from './shadow.jpg'
 import Telescope from './Telescope.jpg'
+import MarsBg from './MarsBg.png'
+import MoonBg from './MoonBg.png'
+import JupiterBg from './JupiterBg.png'
+import VenusBg from './VenusBg.png'
+import NeptuneBg from './NeptuneBg.png'
+import UFO from './UFO.png'
+import Half from './half.png'
 export {
-  Mars, Moon, Neptune, Venus, Jupiter, Nasa, Astronaut, NebulaStar, Molecule, Network, Shadow, Telescope
+  Mars, Moon, Neptune, Venus, Jupiter, Nasa, Astronaut, NebulaStar, Molecule, Network, Shadow, Telescope, Half, MarsBg, MoonBg, JupiterBg, VenusBg, NeptuneBg, UFO
 }

@@ -19,7 +19,7 @@ export default function SideBar(props) {
   const info = msg();
   return (
     <>
-      {props.isShow ? <ListGroup as="ol" className="opacity-50 w-25 position-absolute" style={{ left: "75%", top: "25%" }} >
+      {/* {props.isShow ? <ListGroup as="ol" className="opacity-50 w-25 position-absolute" style={{ left: "75%", top: "25%" }} >
         {
           info.map((e, index) =>{ 
             return(
@@ -44,7 +44,33 @@ export default function SideBar(props) {
           )})
         }
       </ListGroup > : ""
-      }
+      } */}
+      <ListGroup as="ol" className="opacity-50 w-25 position-absolute" style={{ left: "75%", bottom: "0%" }} >
+        {
+          info.map((e, index) => {
+            return (
+              <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light " key={e.id}>
+                <Figure className="my-0">
+                  <LazyLoadImage style={paras}
+                    width={70}
+                    height={0}
+                    src={e.Img}
+                    effect="blur"
+
+                  />
+                </Figure>
+                <div className="ms-2 me-auto">
+                  <div className="fw-bold ">{e.Title}</div>
+                  {e.subTitle}
+                </div>
+                <Badge bg="" className=" text-dark fs-6" pill>
+                  {e.date}
+                </Badge>
+              </ListGroup.Item>
+            )
+          })
+        }
+      </ListGroup > 
     </>
   );
 }

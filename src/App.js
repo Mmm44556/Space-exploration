@@ -4,7 +4,8 @@ import Navs from "./components/Navigation";
 import Content from "./components/Content";
 import Nebula from "./components/Nebula";
 import Footer from './components/Footer';
-import CurrentPlanet from './components/currentPlanet'
+import SideBar from './components/SideBar';
+import NewsList from './components/SideBar/news';
 import './App.css'
 
 
@@ -29,6 +30,10 @@ function App() {
         <Navs />
         <Nebula />
         <Content isShow={state.isShow} showAll={() => dispatch({ type: "start", isShow: true })} />
+        {
+          state.isShow ?
+            <SideBar /> : <NewsList /> 
+        }
       </StrictMode>
       {
         state.isShow ?
@@ -36,7 +41,7 @@ function App() {
             <Footer isShow={state.isShow} />
           </Suspense> : ""
       }
-      
+
 
 
     </div>

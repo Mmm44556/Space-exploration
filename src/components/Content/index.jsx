@@ -14,36 +14,16 @@ export default function Content(props) {
         <span className="solar"></span>
       </div>
       <Container >
-        <Row className="banner">
-          <Col xs={12} md={6} xl={6}>
+        <Row className="position-relative">
+          <Col xs={11} md={11} xl={11}>
             <Banner show={props.isShow} showAll={props.showAll} />
           </Col>
-          <Col xs={12} md={6} xl={6}>
-            <div className="backgroundImg" />
-          </Col>
-        </Row>
-
-        <Row >
-          <Col xs={12} md={6} xl={10} >
-
-
-          </Col>
-          <Col xs={12} md={6} xl={2} >
-            {/* {
-              props.isShow ?
-                <Suspense fallback={<h1>Loading....</h1>}>
-                  <SideBar isShow={props.isShow} />
-                </Suspense>
-                : ""
-            } */}
-
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={6} xl={12} >
-
-          </Col>
-        </Row>
+          <Col xs={1} md={1} xl={1}>
+            {!(props.isShow) && <div className="backgroundImg" />}
+          </Col> 
+         
+        </Row> 
+      
       </Container>
 
 

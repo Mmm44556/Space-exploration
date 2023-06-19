@@ -3,11 +3,11 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-import { BsInstagram, BsFacebook, BsMailbox } from "react-icons/bs";
-
+import { BsInstagram, BsLinkedin, BsMailbox } from "react-icons/bs";
+import { FaGithub, FaWpexplorer } from "react-icons/fa";
 export default function Navs() {
   return (
-    <Navbar expand="lg" variant="dark" fixed="top" className='Nav ms-5'>
+    <Navbar expand="lg" variant="dark" fixed="top" className='Nav ms-1 '>
       <Container>
         <NavLink href="/portfolio">
 
@@ -28,11 +28,11 @@ export default function Navs() {
           </Nav>
 
           <Nav>
-            <Nav.Link href="#Instagram">
-              < BsInstagram />
+            <Nav.Link href="#Linkedin">
+              < BsLinkedin />
             </Nav.Link>
-            <Nav.Link href="#Facebook">
-              <BsFacebook />
+            <Nav.Link href="#github">
+              <FaGithub />
             </Nav.Link>
             <Nav.Link href="#Mail">
               < BsMailbox />
@@ -41,7 +41,7 @@ export default function Navs() {
         </Navbar.Collapse>
       </Container>
 
-    </Navbar>
+    </Navbar >
 
 
   );

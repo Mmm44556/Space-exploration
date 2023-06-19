@@ -1,12 +1,9 @@
+*{
+  font-family: cursive;
+}
 body {
   background-color: rgb(5, 4, 4);
-  /* overflow-x: hidden; */
   overflow: hidden;
-}
-
-.Nav {
-  font-size: 25px;
-  /* border: 1px solid red */
 }
 
 .App-Container {
@@ -17,12 +14,142 @@ body {
   padding-top: 90px;
 }
 
-.banner {
-  position: relative;
-  /* margin-bottom: 300px; */
+/* banner */
+.Nav {
+  font-size: 2rem;
+  /* border: 1px solid red */
+}
+
+.startBtn {
+  animation: fadeIn1 1.5s 1 forwards;
+  transition: font-size 1s ease-in;
+}
+.startBtn:hover{
+  font-size: 30px;
+}
+
+.startExploration {
+  animation: fadeIn1 4s 1 reverse forwards;
+}
+
+.exploreBox .Text0,
+.Text1,
+.Text2,
+.Text3 {
+  display: inline-block;
   /* border: 1px solid red; */
+}
+
+
+.exploreBox .Text0 {
+  animation: spacingRound0 5s ease-in-out 1 forwards ;
 
 }
+
+.exploreBox .Text1 {
+  animation: spacingRound1 4s ease-in 1 forwards;
+}
+
+.exploreBox .Text2 {
+  animation: spacingRound2 4s ease-in 1 forwards;
+}
+
+.exploreBox .Text3 {
+  animation: spacingRound3 4s ease-in 1 forwards;
+}
+
+.ufo0 {
+  left: 0;
+  top: -100%;
+  animation: ufo0 4s ease-in-out 1 reverse forwards;
+}
+.ufo1 {
+  right: 25%;
+  top: 5%;
+  animation: ufo1 3s ease-in-out 1 reverse forwards;
+}
+
+@keyframes ufo0 {
+  from {
+    transform: translate(-130%, 0%) rotate(-30deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(160%, 230%) rotate(-5deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ufo1 {
+  from {
+    transform: translate(500%,-100%) rotate(5deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(0%, 0%) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+
+@keyframes spacingRound0 {
+  from {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(-200%, -400%) rotate(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spacingRound1 {
+  from {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(350%, -400%) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spacingRound2 {
+  from {
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
+
+  to {
+    transform: translate(550%, 900%) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spacingRound3 {
+  from {
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
+
+  to {
+    transform: translate(-550%, 900%) rotate(-35deg);
+    opacity: 0;
+  }
+}
+
+/* ----- */
+/* sideBar */
+.hint{
+  animation: fadeIn1 2s ease-in-out 1;
+}
+
+
+/* ------ */
 
 .backgroundImg {
   background-image: url('../public/images/background.png');
@@ -38,7 +165,7 @@ body {
   top: -200px;
   transform: translate(-50%, -50%);
   animation: carousel 60s linear infinite backwards;
-  animation-play-state: paused;
+  /* animation-play-state: paused; */
 
 
 }
@@ -90,9 +217,7 @@ body {
 
   100% {
     opacity: 0;
-
   }
-
 }
 
 @keyframes carousel {
@@ -167,7 +292,6 @@ body {
 
   50%,
   100% {
-    /* transform: translateY(0); */
   }
 
   75% {
@@ -175,23 +299,48 @@ body {
   }
 }
 
-.swiper-slide-next .blur>img {
+.bouncedUp .swiper-slide-next .blur>img {
   animation: zoomIn 0.3s 1 ease-in-out forwards;
 
 
 }
-
-.bg .swiper-slide-next .blur>img {
-  /* border: 1px solid red; */
-  width: 100% !important;
+.bouncedUp .swiper-slide .blur>img{
+    margin-top: 15px;
 }
 
-.bg .swiper-slide-next .blur {
-  width: 300%;
-  transform: translate(-30%);
+.bgSwiper .swiper-slide-active .blur>img {
+  animation: fadeIn 2s 1 forwards;
 }
 
+.bgSwiper .swiper-slide .blur>img {
+  opacity: 0;
+}
 
+.bgSwiper .blur {
+  display: inline !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+
+  }
+
+  to {
+    opacity: 0.3;
+  }
+}
+
+@keyframes fadeIn1 {
+  from {
+    opacity: 0;
+
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 @keyframes zoomIn {
 
@@ -205,11 +354,11 @@ body {
 }
 
 .bouncedUp {
-  bottom: -50%;
-  animation: fadeIn 1s ease 3 forwards;
+  bottom: 0%;
+  /* animation: fadeIn 1s ease 3 forwards; */
 }
 
-@keyframes fadeIn {
+@keyframes flowUp {
   0% {
     bottom: -50%;
   }

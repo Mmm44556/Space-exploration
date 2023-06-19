@@ -1,4 +1,4 @@
-import { Mars,Moon,Jupiter,Venus,Neptune } from '../assets'
+import { Mars, Moon, Jupiter, Venus, Neptune, JupiterBg } from '../assets'
 
 export const footerImg = () => {
   return (
