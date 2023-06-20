@@ -147,7 +147,42 @@ body {
 .hint{
   animation: fadeIn1 2s ease-in-out 1;
 }
+.news li[alt="Nasa"] {
+  animation:slideInRight 3s 1 forwards;
+}
+.news li[alt="NebulaStar"] {
+  animation:slideInRight 4.5s 1 forwards;
+}
+.news li[alt="Astronaut"] {
+  animation: slideInRight 5.5s 1 forwards;
+}
+.news li[alt="Molecule"] {
+  animation: slideInRight 6.5s 1 forwards;
+}
 
+@keyframes slideInRight {
+  from{
+    transform: translateX(100%);
+  }
+  to{
+transform: translateX(0%);
+  }
+}
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
 
 /* ------ */
 

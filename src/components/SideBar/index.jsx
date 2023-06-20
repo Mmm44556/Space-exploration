@@ -1,13 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Badge from 'react-bootstrap/Badge';
+import { Image } from 'react-bootstrap';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Figure from 'react-bootstrap/Figure';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { msg } from './msg';
+import PubSub from 'pubsub-js';
+import { msg1 } from './msg';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 export default function SideBar(props) {
-  const [isShowMsg, setIsShowMsg] = useState(false);
 
+  const [info, setInfo] = useState(() => {
+    let i = msg1();
+    return (i[0])
+  });
+  useEffect(() => {
+    PubSub.subscribe('slideID', getNews)
+  }, [])
+
+  const getNews = (Msg, ID) => {
+    let id = ((Number(ID)) - 1);
+    let news = msg1();
+    console.log(id)
+    setInfo(() => news[id]);
+  }
 
   const paras = {
     marginBottom: "0.5rem",
@@ -15,62 +30,41 @@ export default function SideBar(props) {
     maxWidth: "100%",
     height: "auto"
   }
-  
-  const info = msg();
+
+
   return (
     <>
-      {/* {props.isShow ? <ListGroup as="ol" className="opacity-50 w-25 position-absolute" style={{ left: "75%", top: "25%" }} >
-        {
-          info.map((e, index) =>{ 
-            return(
-            <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light " key={e.id}>
-              <Figure className="my-0">
+      <ListGroup as="ol" className="news opacity-50 w-25 position-absolute" style={{ left: "75%", bottom: "0%", zIndex: "3" }} >
+
+        {info.map((e, index) => (
+
+          <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light mb-1 " alt={e.class} >
+            <Figure className="my-0">
+              <Suspense fallback={<h1 className='position-absolute'>loading...</h1>}>
                 <LazyLoadImage style={paras}
                   width={70}
                   height={0}
                   src={e.Img}
                   effect="blur"
-                  
                 />
-              </Figure>
-              <div className="ms-2 me-auto">
-                <div className="fw-bold ">{e.Title}</div>
-                {e.subTitle}
-              </div>
-              <Badge bg="" className=" text-dark fs-6" pill>
-                {e.date}
-              </Badge>
-            </ListGroup.Item>
-          )})
-        }
-      </ListGroup > : ""
-      } */}
-      <ListGroup as="ol" className="opacity-50 w-25 position-absolute" style={{ left: "75%", bottom: "0%" }} >
-        {
-          info.map((e, index) => {
-            return (
-              <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light " key={e.id}>
-                <Figure className="my-0">
-                  <LazyLoadImage style={paras}
-                    width={70}
-                    height={0}
-                    src={e.Img}
-                    effect="blur"
+              </Suspense>
+            </Figure>
+            <div className="ms-2 me-auto">
+              <div className="fw-bold ">{e.Title}</div>
+              {e.subTitle}
+            </div>
+            <Badge bg="" className=" text-dark fs-6" pill>
+              {e.date}
+            </Badge>
+            <Badge pill as="button" bg="secondary">
+              Detail
+            </Badge>
+          </ListGroup.Item>
 
-                  />
-                </Figure>
-                <div className="ms-2 me-auto">
-                  <div className="fw-bold ">{e.Title}</div>
-                  {e.subTitle}
-                </div>
-                <Badge bg="" className=" text-dark fs-6" pill>
-                  {e.date}
-                </Badge>
-              </ListGroup.Item>
-            )
-          })
+        )
+        )
         }
-      </ListGroup > 
+      </ListGroup >
     </>
   );
 }

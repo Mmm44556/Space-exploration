@@ -44,13 +44,13 @@ export default function Banner(props) {
 
       (<div className={`position-fixed  text-center start-50 h-50 exploreBox   ${startExploration ? 'startExploration' : ''}`} style={{ marginTop: "100px", transform: " translate(-50%, 0%)", opacity: ".9", zIndex: "2" }} >
         {startExploration ? <Image src={UFO} className="w-25 position-absolute ufo0" fluid alt='UFO' /> : ''}
-        <h1 ><br /><hgroup className={`${startExploration ? 'Text0' : ''}`} >{`S P A C E`}<FaSpaceShuttle style={{transform:"rotateZ(-80deg)"}}/><br />EXPLORATION</hgroup></h1>
+        <h1 ><br /><hgroup className={`${startExploration ? 'Text0' : ''}`} >{`S P A C E`}<FaSpaceShuttle style={{ transform: "rotateZ(-80deg)" }} /><br />EXPLORATION</hgroup></h1>
         <section className="fs-5 text-capitalize">
-          {startExploration ? <Image src={UFO} className='w-25 position-absolute ufo1' fluid alt='UFO' /> : ''}
+          {!startExploration ? <Image src={UFO} className='w-25 position-absolute ufo1' fluid alt='UFO' /> : ''}
           <span className={`${startExploration ? 'Text1' : ''}`}>During the time that has passed since the launching of the first artificial satellite in 1957, astronauts</span>
           <span className="Text4">have traveled to the moon,</span><span className={`${startExploration ? 'Text2' : ''}`}> probes have explored the solar system, </span>and instruments
           <span className={`${startExploration ? 'Text3' : ''}`}> in space have discovered thousands of planets around other stars.</span></section>
-        {startBtn && (<Button variant="warning" className="startBtn" size="lg" onClick={explore}>START<FaWpexplorer/></Button>)}
+        {startBtn && (<Button variant="warning" className="startBtn" size="lg" onClick={explore}>START<FaWpexplorer /></Button>)}
 
 
         <div className="circleBox">
@@ -58,9 +58,9 @@ export default function Banner(props) {
           <div className="circle2  border">.</div>
           <div className="circle3  border">.</div>
         </div>
-        
-        <Image src={Half} fluid className="position-fixed opacity-50  " style={{ left: "-60%",top:"0%",width:"60%"}} />;
-        
+
+        <Image src={Half} fluid className="position-fixed opacity-50  " style={{ left: "-60%", top: "0%", width: "60%" }} />;
+
 
 
 

@@ -102,7 +102,7 @@ export default function Footer() {
 
       <Swiper
         modules={[Controller, EffectFade]}
-        className="mySwiper  w-50 h-75 position-absolute  bgSwiper start-100 bottom-50 "
+        className="mySwiper  w-50 h-75 position-absolute  bgSwiper start-100 bottom-50 z-1 "
         style={{ transform: "translate(-80%,40%)", height: "0%", zIndex: "1" }}
         slidesPerView={1}
         enabled={false}
