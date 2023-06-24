@@ -114,7 +114,7 @@ export default function Footer() {
         onSlideChangeTransitionEnd={(w) => bannerDone(w.slides[w.activeIndex])}>
         {
           bgImgs.map((e) =>
-            <SwiperSlide className="text-center  " id={e.id} key={e.id} onClick={() => { console.log(e.id) }} >
+            <SwiperSlide className="text-center  " id={e.id} key={e.id} >
               <LazyLoadImage src={e.img} className=" w-50 " effect="blur"
               />
             </SwiperSlide>

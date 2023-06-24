@@ -1,6 +1,7 @@
-*{
+* {
   font-family: cursive;
 }
+
 body {
   background-color: rgb(5, 4, 4);
   overflow: hidden;
@@ -14,7 +15,35 @@ body {
   padding-top: 90px;
 }
 
+.te {
+  font-size: 1.5rem;
+  height: 100px;
+  overflow-y: auto;
+
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: lightslategrey;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: transparent;
+}
+
 /* banner */
+.lazyBox>span {
+  display: contents !important;
+}
+
 .Nav {
   font-size: 2rem;
   /* border: 1px solid red */
@@ -24,7 +53,8 @@ body {
   animation: fadeIn1 1.5s 1 forwards;
   transition: font-size 1s ease-in;
 }
-.startBtn:hover{
+
+.startBtn:hover {
   font-size: 30px;
 }
 
@@ -42,7 +72,7 @@ body {
 
 
 .exploreBox .Text0 {
-  animation: spacingRound0 5s ease-in-out 1 forwards ;
+  animation: spacingRound0 5s ease-in-out 1 forwards;
 
 }
 
@@ -63,6 +93,7 @@ body {
   top: -100%;
   animation: ufo0 4s ease-in-out 1 reverse forwards;
 }
+
 .ufo1 {
   right: 25%;
   top: 5%;
@@ -83,7 +114,7 @@ body {
 
 @keyframes ufo1 {
   from {
-    transform: translate(500%,-100%) rotate(5deg);
+    transform: translate(500%, -100%) rotate(5deg);
     opacity: 1;
   }
 
@@ -142,39 +173,102 @@ body {
   }
 }
 
+
 /* ----- */
 /* sideBar */
-.hint{
+.hint {
   animation: fadeIn1 2s ease-in-out 1;
 }
+
 .news li[alt="Nasa"] {
-  animation:slideInRight 3s 1 forwards;
+  animation: slideInRight 3s 1 forwards;
 }
+
 .news li[alt="NebulaStar"] {
-  animation:slideInRight 4.5s 1 forwards;
+  animation: slideInRight 4.5s 1 forwards;
 }
+
 .news li[alt="Astronaut"] {
   animation: slideInRight 5.5s 1 forwards;
 }
+
 .news li[alt="Molecule"] {
   animation: slideInRight 6.5s 1 forwards;
 }
 
-@keyframes slideInRight {
-  from{
-    transform: translateX(100%);
+.news li:hover .detail {
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow-x: visible;
+}
+
+.news li {
+  height: 100px;
+  transition: 0.5s;
+}
+
+.news li:hover {
+  height: 150px;
+}
+
+.news .detail {
+  width: 40%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
+@media (min-width:768px) and (max-width:1500px) {
+  .news li {
+    height: 80px;
+    transition: 0.5s;
   }
-  to{
-transform: translateX(0%);
+
+  .tabBox {
+    font-size: 20px !important;
+  }
+
+  .baSelect {
+    z-index: 3;
+  }
+
+  .ba {
+    height: 600px;
+    overflow-y: auto;
+  }
+
+  .bouncedUp {
+    position: absolute;
+    display: inline-block;
+    transform: translate(-20%, -40%) rotateZ(90deg) !important;
+    left: 0 !important;
+    width: 35% !important;
+  }
+
+  .news {
+    bottom: -10 !important;
   }
 }
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
 .item-enter {
   opacity: 0;
 }
+
 .item-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
+
 .item-exit {
   opacity: 1;
 }
@@ -183,6 +277,8 @@ transform: translateX(0%);
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
+
+
 
 /* ------ */
 
@@ -326,8 +422,7 @@ transform: translateX(0%);
   }
 
   50%,
-  100% {
-  }
+  100% {}
 
   75% {
     transform: translateY(4px);
@@ -339,8 +434,9 @@ transform: translateX(0%);
 
 
 }
-.bouncedUp .swiper-slide .blur>img{
-    margin-top: 15px;
+
+.bouncedUp .swiper-slide .blur>img {
+  margin-top: 15px;
 }
 
 .bgSwiper .swiper-slide-active .blur>img {

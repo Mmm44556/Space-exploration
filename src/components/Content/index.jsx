@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import SideBar from '../SideBar'
 import Banner from "./Banner";
 
 export default function Content(props) {
@@ -14,7 +12,7 @@ export default function Content(props) {
         <span className="solar"></span>
       </div>
       <Container >
-        <Row className="position-relative">
+        <Row className="position-relative ">
           <Col xs={11} md={11} xl={11}>
             <Banner show={props.isShow} showAll={props.showAll} />
           </Col>

@@ -7,7 +7,8 @@ export const footerBg = () => {
         id: "2",
         subTitle: "MarsBg",
         img: MarsBg,
-        date: ""
+        date: "",
+        description: "​Mars is the fourth planet from the Sun – a dusty, cold, desert world with a very thin atmosphere. Mars is also a dynamic planet with seasons, polar ice caps, canyons, extinct volcanoes, and evidence that it was even more active in the past.Mars is one of the most explored bodies in our solar system, and it's the only planet where we've sent rovers to roam the alien landscape.",
       },
       {
         id: "3",
@@ -27,10 +28,10 @@ export const footerBg = () => {
         img: MoonBg,
         date: ""
       },
-       {
+      {
         id: "1",
-         subTitle: "NeptuneBg",
-         img: NeptuneBg,
+        subTitle: "NeptuneBg",
+        img: NeptuneBg,
         date: ""
 
       },

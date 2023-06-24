@@ -4,7 +4,6 @@ import Navs from "./components/Navigation";
 import Content from "./components/Content";
 import Nebula from "./components/Nebula";
 import Footer from './components/Footer';
-// import SideBar from './components/SideBar';
 import NewsList from './components/SideBar/news';
 import './App.css'
 const BComponent = React.lazy(() => import("./components/SideBar"))
@@ -17,7 +16,7 @@ function App() {
   }
 
   const Loading = () => {
-    return <h1 className='position-absolute border end-0 bottom-0'>Loading....</h1>
+    return <h1 className='position-absolute end-0 bottom-0'>Loading....</h1>
   }
 
   const [state, dispatch] = useReducer(reducer, { type: "start", isShow: false })
@@ -26,7 +25,7 @@ function App() {
     if (state.isShow) {
       let id = setTimeout(() => {
         setLazyTime(true)
-      }, 8000)
+      }, 7500)
 
       return () => {
         clearTimeout(id)

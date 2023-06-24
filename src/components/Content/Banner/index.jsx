@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
+import { Col, Container, Row } from "react-bootstrap";
 import { Image } from 'react-bootstrap';
 import { FaWpexplorer, FaSpaceShuttle } from "react-icons/fa";
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Tab from 'react-bootstrap/Tab';
 import PubSub from 'pubsub-js';
 import { footerBg } from '../../Footer/bgMsg'
 import { UFO, Half } from '../../assets';
+import { NasaImages } from './stream'
 const imgArr = footerBg();
 export default function Banner(props) {
-
   const { showAll } = props;
   const [startExploration, setStartExploration] = useState(false);
   const [startBtn, setStartBtn] = useState(true);
@@ -70,58 +73,52 @@ export default function Banner(props) {
   }
   //接收到當前選擇的星球
   const InfoBanner = (msg, ID) => {
-
     if (typeof ID !== 'object') {
       let fn = (e) => e.id === ID;
       let updateImg = imgArr.filter(fn);
       setInfo(() => updateImg[0])
       return (<>
-        <h1>{info.subTitle}</h1>
+        <h4 className='border'>{info.subTitle}</h4>
       </>
       )
     }
+
     return (<>
-      <span className='text-center'><h1 className=' '>{info.subTitle}</h1> </span>
+      <section className='text-center'>
+        <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
+          <Row>
+            <Col sm={3} xl={2} md={3} className="baSelect">
+              <ListGroup horizontal={'xxl' | 'xl' | 'lg' | 'md'} variant='light' >
+                <ListGroup.Item action href="#link1" variant='light' >
+                  Mars
+                </ListGroup.Item>
+                <ListGroup.Item action href="#link2" variant='light'>
+                  Link 2
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+            <Col sm={9} xl={10} md={9} style={{ zIndex: "3" }} className="ba">
+              <Tab.Content>
+                <Tab.Pane eventKey="#link1" className="text-start fs-4 tabBox">
+                  <p>
+                    {info.description}
+                  </p>
+                  <div>
+                    <NasaImages />
+                  </div>
+
+                </Tab.Pane>
+                <Tab.Pane eventKey="#link2">Tab pane content 2</Tab.Pane>
+              </Tab.Content>
+            </Col>
+          </Row>
+        </Tab.Container>
+      </section>
     </>
     )
   }
 
-  const Additional = () => {
 
-    return (
-      <>
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td colSpan={2}>Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </Table>
-      </>
-    )
-  }
 
   return (<>
     {isLoading ? <InitialBanner /> : <InfoBanner />}

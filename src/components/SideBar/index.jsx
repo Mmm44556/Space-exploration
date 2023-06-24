@@ -11,7 +11,7 @@ export default function SideBar(props) {
 
   const [info, setInfo] = useState(() => {
     let i = msg1();
-    return (i[0])
+    return (i[1])
   });
   useEffect(() => {
     PubSub.subscribe('slideID', getNews)
@@ -38,7 +38,7 @@ export default function SideBar(props) {
 
         {info.map((e, index) => (
 
-          <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light mb-1 " alt={e.class} >
+          <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light mb-1 " alt={e.class} key={e.id}>
             <Figure className="my-0">
               <Suspense fallback={<h1 className='position-absolute'>loading...</h1>}>
                 <LazyLoadImage style={paras}
@@ -49,7 +49,7 @@ export default function SideBar(props) {
                 />
               </Suspense>
             </Figure>
-            <div className="ms-2 me-auto">
+            <div className="ms-2 me-auto detail" >
               <div className="fw-bold ">{e.Title}</div>
               {e.subTitle}
             </div>
