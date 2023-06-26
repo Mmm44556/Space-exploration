@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense,useCallback } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import { Image } from 'react-bootstrap';
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -8,19 +8,27 @@ import PubSub from 'pubsub-js';
 import { msg1 } from './msg';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 export default function SideBar(props) {
-
+  const [isToggleNews, setIsToggleNews] = useState(true);
   const [info, setInfo] = useState(() => {
     let i = msg1();
     return (i[1])
   });
+  
   useEffect(() => {
-    PubSub.subscribe('slideID', getNews)
+    return ()=>{
+      PubSub.subscribe('slideID', getNews)
+      PubSub.subscribe('toggleNews', toggleNews)
+    }
   }, [])
+  //開關新聞
+  const toggleNews = useCallback((msg, data) => {
+    setIsToggleNews((v) => !v)
+  }, [isToggleNews])
 
   const getNews = (Msg, ID) => {
     let id = ((Number(ID)) - 1);
     let news = msg1();
-    console.log(id)
+    // console.log(id)
     setInfo(() => news[id]);
   }
 
@@ -34,7 +42,7 @@ export default function SideBar(props) {
 
   return (
     <>
-      <ListGroup as="ol" className="news opacity-50 w-25 position-absolute" style={{ left: "75%", bottom: "0%", zIndex: "3" }} >
+      <ListGroup as="ol" className={`news w-25 position-absolute ${isToggleNews ? "slideDown" : "slideUs"}`} style={{ left: "75%", zIndex: "3" }} >
 
         {info.map((e, index) => (
 

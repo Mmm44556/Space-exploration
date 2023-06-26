@@ -24,10 +24,12 @@ body {
 
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track-piece {
   background: transparent;
+  margin: 100px 0px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -67,9 +69,7 @@ body {
 .Text2,
 .Text3 {
   display: inline-block;
-  /* border: 1px solid red; */
 }
-
 
 .exploreBox .Text0 {
   animation: spacingRound0 5s ease-in-out 1 forwards;
@@ -232,22 +232,48 @@ body {
     z-index: 3;
   }
 
+  /* banner的內容高 */
   .ba {
     height: 600px;
     overflow-y: auto;
   }
 
-  .bouncedUp {
-    position: absolute;
-    display: inline-block;
-    transform: translate(-20%, -40%) rotateZ(90deg) !important;
-    left: 0 !important;
-    width: 35% !important;
-  }
-
   .news {
     bottom: -10 !important;
   }
+
+}
+
+.slideDown {
+  animation: disappear1 1.5s 1 forwards;
+}
+
+.slideUs {
+  animation: disappear 1s 1 forwards;
+}
+
+@keyframes disappear {
+  from {
+    bottom: 0%;
+  }
+
+  to {
+    bottom: -60%;
+    visibility: hidden;
+  }
+
+}
+
+@keyframes disappear1 {
+  from {
+    bottom: -60%;
+  }
+
+  to {
+    bottom: 0%;
+    visibility: visible;
+  }
+
 }
 
 @keyframes slideInRight {
@@ -482,11 +508,6 @@ body {
   to {
     width: 60%;
   }
-}
-
-.bouncedUp {
-  bottom: 0%;
-  /* animation: fadeIn 1s ease 3 forwards; */
 }
 
 @keyframes flowUp {

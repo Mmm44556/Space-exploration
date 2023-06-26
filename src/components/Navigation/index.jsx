@@ -1,11 +1,27 @@
+import { useState } from 'react';
 import { NavLink } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
-import { BsInstagram, BsLinkedin, BsMailbox } from "react-icons/bs";
-import { FaGithub, FaWpexplorer } from "react-icons/fa";
+import { IoMdPlanet } from "react-icons/io";
+import { BsLinkedin, BsMailbox } from "react-icons/bs";
+import { FaGithub, FaRegNewspaper } from "react-icons/fa";
+import PubSub from 'pubsub-js';
 export default function Navs() {
+  const [isActive, setIsActive] = useState(false)
+  const [isActive1, setIsActive1] = useState(false)
+  //控制footer
+  const togglePlanets = () => {
+    PubSub.publish('togglePlanets', '')
+    setIsActive((v) => !v)
+
+  }
+  const toggleNews = () => {
+    PubSub.publish('toggleNews', '')
+    setIsActive1((v) => !v)
+
+  }
+
   return (
     <Navbar expand="lg" variant="dark" fixed="top" className='Nav ms-1 '>
       <Container>
@@ -28,10 +44,16 @@ export default function Navs() {
           </Nav>
 
           <Nav>
+            <Nav.Link href="#Planets" onClick={togglePlanets} active={isActive}>
+              < IoMdPlanet />
+            </Nav.Link>
+            <Nav.Link href="#News" onClick={toggleNews} active={isActive1} >
+              < FaRegNewspaper />
+            </Nav.Link>
             <Nav.Link href="#Linkedin">
               < BsLinkedin />
             </Nav.Link>
-            <Nav.Link href="#github">
+            <Nav.Link href="https://github.com/Mmm44556" target="_blank">
               <FaGithub />
             </Nav.Link>
             <Nav.Link href="#Mail">

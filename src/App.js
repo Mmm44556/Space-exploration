@@ -5,8 +5,9 @@ import Content from "./components/Content";
 import Nebula from "./components/Nebula";
 import Footer from './components/Footer';
 import NewsList from './components/SideBar/news';
+import SideBar from './components/SideBar';
 import './App.css'
-const BComponent = React.lazy(() => import("./components/SideBar"))
+// const BComponent = React.lazy(() => import("./components/SideBar"))
 
 
 
@@ -21,17 +22,17 @@ function App() {
 
   const [state, dispatch] = useReducer(reducer, { type: "start", isShow: false })
   const [lazyTime, setLazyTime] = useState(false);
-  useEffect(() => {
-    if (state.isShow) {
-      let id = setTimeout(() => {
-        setLazyTime(true)
-      }, 7500)
+  // useEffect(() => {
+  //   if (state.isShow) {
+  //     let id = setTimeout(() => {
+  //       setLazyTime(true)
+  //     }, 7500)
 
-      return () => {
-        clearTimeout(id)
-      }
-    }
-  }, [state])
+  //     return () => {
+  //       clearTimeout(id)
+  //     }
+  //   }
+  // }, [state])
 
 
   return (
@@ -40,10 +41,14 @@ function App() {
         <Navs />
         <Nebula />
         <Content isShow={state.isShow} showAll={() => dispatch({ type: "start", isShow: true })} />
-        {
+        {/* {
           state.isShow ?
-            lazyTime ? <Suspense fallback={<Loading />}>
-              <BComponent /></Suspense> : "" : <NewsList />
+            lazyTime ? <Suspense >
+              <BComponent /></Suspense> : null : <NewsList />
+        } */}
+        {
+          state.isShow ? 
+            <SideBar />: <NewsList />
         }
       </StrictMode>
       {

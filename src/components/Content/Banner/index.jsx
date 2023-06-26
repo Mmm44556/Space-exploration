@@ -3,20 +3,23 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Image } from 'react-bootstrap';
 import { FaWpexplorer, FaSpaceShuttle } from "react-icons/fa";
 import Button from 'react-bootstrap/Button';
-import Table from 'react-bootstrap/Table';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Tab from 'react-bootstrap/Tab';
 import PubSub from 'pubsub-js';
 import { footerBg } from '../../Footer/bgMsg'
 import { UFO, Half } from '../../assets';
 import { NasaImages } from './stream'
-const imgArr = footerBg();
+let imgArr = footerBg();
 export default function Banner(props) {
+
   const { showAll } = props;
   const [startExploration, setStartExploration] = useState(false);
   const [startBtn, setStartBtn] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [info, setInfo] = useState(() => imgArr[0]);
+  const [info, setInfo] = useState(() => {
+    let imgArr = footerBg();
+    return imgArr[0]
+  });
 
   //點擊後掛載星球
   const explore = () => {
@@ -29,7 +32,8 @@ export default function Banner(props) {
 
     //清除banner組件
     if (startExploration) {
-      PubSub.subscribe('slideID', InfoBanner)
+      // console.log('@')
+    
       const timer = setTimeout(() => {
         setIsLoading(false)
         PubSub.publish('done', { done: 'ok' })
@@ -37,10 +41,13 @@ export default function Banner(props) {
 
       return () => {
         clearTimeout(timer);
-
+        
       }
     }
-  }, [startExploration])
+    return ()=>{
+      PubSub.subscribe('slideID', InfoBanner)
+    }
+  }, [startBtn])
 
   const InitialBanner = () => {
     return (
@@ -73,24 +80,21 @@ export default function Banner(props) {
   }
   //接收到當前選擇的星球
   const InfoBanner = (msg, ID) => {
+    // console.log(info)
     if (typeof ID !== 'object') {
       let fn = (e) => e.id === ID;
       let updateImg = imgArr.filter(fn);
       setInfo(() => updateImg[0])
-      return (<>
-        <h4 className='border'>{info.subTitle}</h4>
-      </>
-      )
     }
 
     return (<>
       <section className='text-center'>
-        <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
+        <Tab.Container id="list-group-tabs-example" defaultActiveKey="#Mars">
           <Row>
             <Col sm={3} xl={2} md={3} className="baSelect">
               <ListGroup horizontal={'xxl' | 'xl' | 'lg' | 'md'} variant='light' >
-                <ListGroup.Item action href="#link1" variant='light' >
-                  Mars
+                <ListGroup.Item action href="#Mars" variant='light' >
+                 {info.subTitle}
                 </ListGroup.Item>
                 <ListGroup.Item action href="#link2" variant='light'>
                   Link 2
@@ -99,12 +103,12 @@ export default function Banner(props) {
             </Col>
             <Col sm={9} xl={10} md={9} style={{ zIndex: "3" }} className="ba">
               <Tab.Content>
-                <Tab.Pane eventKey="#link1" className="text-start fs-4 tabBox">
+                <Tab.Pane eventKey="#Mars" className="text-start fs-4 tabBox">
                   <p>
-                    {info.description}
+                    {info.descriptions} 
                   </p>
                   <div>
-                    <NasaImages />
+                    <NasaImages currentP={info.subTitle}/>
                   </div>
 
                 </Tab.Pane>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import Button from 'react-bootstrap/Button';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -21,22 +21,31 @@ export default function Footer() {
   const [isDone, setIsDone] = useState(false);
   const [imgs] = useState(() => footerImg());
   const [bgImgs] = useState(() => footerBg());
+  const [isToggle, setIsToggle] = useState(true);
   let swiper = useSwiper();
 
-    //新的banner組件掛載好在展示選擇
+  //新的banner組件掛載好在展示選擇
   useEffect(() => {
     PubSub.subscribe('done', bannerDone())
-  },[])
-  //發送當前星球的id讓banner資訊替換
-  const bannerDone = (slide)=>{
-    if((slide!==undefined)) {
+    PubSub.subscribe('togglePlanets', togglePlanets)
+    return ()=>{
       PubSub.unsubscribe(bannerDone())
+    }
+  }, [])
+  //開關星球
+  const togglePlanets = (msg, data) => {
+    setIsToggle((v) => !v)
+  }
+  //發送當前星球的id讓banner資訊替換
+  const bannerDone = (slide) => {
+    if (slide != undefined) {
       PubSub.publish('slideID', slide.id)
     }
-    return(
+    return (
       (msg, data) => {
         if (data.done === 'ok') {
           setIsDone(true)
+         
         }
 
       }
@@ -71,12 +80,12 @@ export default function Footer() {
     const data = bgImgs.filter(fn)
     const id = Number(slide.id);
     PubSub.publish('slideID', { id, data })
-  },[])
+  }, [])
 
   return isDone && (
     <> <Swiper modules={[Keyboard, Navigation, Controller]}
-      className="mySwiper w-50  position-absolute  start-50 bouncedUp "
-      style={{ transform: "translate(-50%)", zIndex: "3" }}
+      className={`mySwiper w-50  position-absolute  start-50 bouncedUp ${isToggle ? "slideDown" : "slideUs"}`}
+      style={{ transform: "translate(-50%)", zIndex: "3" ,bottom:'-50%'}}
       slidesPerView={3}
       spaceBetween={30}
       keyboard={{
@@ -91,7 +100,7 @@ export default function Footer() {
         imgs.map((e) =>
           <SwiperSlide className="text-center " key={e.id} >
             <div className="floating" style={{ height: '200px' }}>
-              <LazyLoadImage src={e.img} className="opacity-50 floating  " effect="blur" style={{ width: '30%', WebkitBoxReflect: " right -100px -webkit-linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, .3))" }}
+              <LazyLoadImage src={e.img} className="floating  " effect="blur" style={{ width: '30%', WebkitBoxReflect: " right -100px -webkit-linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, .3))" }}
               />
             </div>
           </SwiperSlide>
@@ -117,6 +126,7 @@ export default function Footer() {
             <SwiperSlide className="text-center  " id={e.id} key={e.id} >
               <LazyLoadImage src={e.img} className=" w-50 " effect="blur"
               />
+              
             </SwiperSlide>
           )
         }
