@@ -47,8 +47,8 @@ function App() {
               <BComponent /></Suspense> : null : <NewsList />
         } */}
         {
-          state.isShow ? 
-            <SideBar />: <NewsList />
+          state.isShow ?
+            <SideBar /> : <NewsList />
         }
       </StrictMode>
       {

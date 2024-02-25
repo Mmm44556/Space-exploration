@@ -1,12 +1,12 @@
 import { useState, useEffect, Suspense,useCallback } from 'react';
 import Badge from 'react-bootstrap/Badge';
-import { Image } from 'react-bootstrap';
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Figure from 'react-bootstrap/Figure';
 import PubSub from 'pubsub-js';
 import { msg1 } from './msg';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import '../assets/css/utilities.css';
 export default function SideBar(props) {
   const [isToggleNews, setIsToggleNews] = useState(true);
   const [info, setInfo] = useState(() => {
@@ -50,14 +50,14 @@ export default function SideBar(props) {
             <Figure className="my-0">
               <Suspense fallback={<h1 className='position-absolute'>loading...</h1>}>
                 <LazyLoadImage style={paras}
-                  width={70}
+                  width={100}
                   height={0}
                   src={e.Img}
                   effect="blur"
                 />
               </Suspense>
             </Figure>
-            <div className="ms-2 me-auto detail" >
+            <div className="ms-2 me-auto detail  " >
               <div className="fw-bold ">{e.Title}</div>
               {e.subTitle}
             </div>

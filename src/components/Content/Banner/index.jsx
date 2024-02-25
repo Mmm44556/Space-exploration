@@ -8,7 +8,9 @@ import Tab from 'react-bootstrap/Tab';
 import PubSub from 'pubsub-js';
 import { footerBg } from '../../Footer/bgMsg'
 import { UFO, Half } from '../../assets';
-import { NasaImages } from './stream'
+import { NasaImages } from './stream';
+
+import '../../assets/css/utilities.css' 
 let imgArr = footerBg();
 export default function Banner(props) {
 
@@ -54,7 +56,7 @@ export default function Banner(props) {
 
       (<div className={`position-fixed  text-center start-50 h-50 exploreBox   ${startExploration ? 'startExploration' : ''}`} style={{ marginTop: "100px", transform: " translate(-50%, 0%)", opacity: ".9", zIndex: "2" }} >
         {startExploration ? <Image src={UFO} className="w-25 position-absolute ufo0" fluid alt='UFO' /> : ''}
-        <h1 ><br /><hgroup className={`${startExploration ? 'Text0' : ''}`} >{`S P A C E`}<FaSpaceShuttle style={{ transform: "rotateZ(-80deg)" }} /><br />EXPLORATION</hgroup></h1>
+        <br /><h1 className={`text-lg ${startExploration ? 'Text0' : ''}`} >{`S P A C E`}<FaSpaceShuttle style={{ transform: "rotateZ(-80deg)" }} /><br /></h1>
         <section className="fs-5 text-capitalize">
           {!startExploration ? <Image src={UFO} className='w-25 position-absolute ufo1' fluid alt='UFO' /> : ''}
           <span className={`${startExploration ? 'Text1' : ''}`}>During the time that has passed since the launching of the first artificial satellite in 1957, astronauts</span>

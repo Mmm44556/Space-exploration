@@ -1,2 +1,2 @@
-import V01 from  './V01.jpg'
-export {V01}
+import V001 from  './V01.jpg'
+export {V001}

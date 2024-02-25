@@ -203,12 +203,13 @@ body {
 }
 
 .news li {
-  height: 100px;
+  height: fit-content;
+  padding: 10px;
   transition: 0.5s;
 }
 
 .news li:hover {
-  height: 150px;
+  height: 100px;
 }
 
 .news .detail {
