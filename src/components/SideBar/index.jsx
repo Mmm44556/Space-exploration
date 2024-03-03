@@ -33,32 +33,35 @@ export default function SideBar(props) {
   }
 
   const paras = {
-    marginBottom: "0.5rem",
+    borderRadius:"0.125rem",
     lineHeight: 1,
-    maxWidth: "100%",
-    height: "auto"
+    objectFit:"cover"
   }
 
 
   return (
     <>
-      <ListGroup as="ol" className={`news w-25 position-absolute ${isToggleNews ? "slideDown" : "slideUs"}`} style={{ left: "75%", zIndex: "3" }} >
+      <ListGroup as="ol" className={`news position-absolute ${isToggleNews ? "slideDown" : "slideUs"}`} style={{ right: "0", zIndex: "3" }} >
 
         {info.map((e, index) => (
 
-          <ListGroup.Item action as="li" className="d-flex justify-content-between align-items-start bg-light mb-1 " alt={e.class} key={e.id}>
+          <ListGroup.Item action as="li"
+           className="d-flex justify-content-between align-items-start bg-light mb-1 "
+           alt={e.class}
+            key={e.id}
+            >
             <Figure className="my-0">
               <Suspense fallback={<h1 className='position-absolute'>loading...</h1>}>
                 <LazyLoadImage style={paras}
                   width={100}
-                  height={0}
+                  height={50}
                   src={e.Img}
                   effect="blur"
                 />
               </Suspense>
             </Figure>
             <div className="ms-2 me-auto detail  " >
-              <div className="fw-bold ">{e.Title}</div>
+              <div className="fw-bold d-inline-block">{e.Title}</div>
               {e.subTitle}
             </div>
             <Badge bg="" className=" text-dark fs-6" pill>

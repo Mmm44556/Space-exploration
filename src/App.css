@@ -196,32 +196,46 @@ body {
   animation: slideInRight 6.5s 1 forwards;
 }
 
+.news {
+  width: 35%;
+}
+
 .news li:hover .detail {
-  white-space: normal;
-  text-overflow: ellipsis;
-  overflow-x: visible;
+  div {
+    white-space: initial;
+    text-overflow: ellipsis;
+    overflow-x: visible;
+    height: 150px;
+  }
+
 }
 
 .news li {
-  height: fit-content;
   padding: 10px;
-  transition: 0.5s;
+  transition: all 0.5s;
+
+  :nth-child(3) {
+    flex: 100px;
+  }
+
 }
 
-.news li:hover {
-  height: 100px;
-}
 
-.news .detail {
-  width: 40%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow-x: hidden;
+.detail {
+
+  div {
+
+    width: 150px;
+    height: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+  }
+
 }
 
 @media (min-width:768px) and (max-width:1500px) {
   .news li {
-    height: 80px;
     transition: 0.5s;
   }
 

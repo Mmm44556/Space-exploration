@@ -122,6 +122,7 @@ export const msg1 = () => {
           Img: Mn03,
           Title: "Eum odit ipsum",
           subTitle: " ",
+          date:"Mon",
           class: "Astronaut"
         },
       ]
