@@ -15,7 +15,7 @@ const NewsList =()=>{
           className=" position-relative"
           style={{ minHeight: '240px' }}
         >
-          <ToastContainer position="top-end" className="p-3" style={{ zIndex: 1 }}>
+          <ToastContainer position="top-end"  style={{ zIndex: 1 }}>
             <Toast bg={"secondary"} style={{ fontSize: "1em" }} onClose={()=>setShow(true)} show={!show} delay={6000}>
               <Toast.Header>
                <GiAstronautHelmet/>

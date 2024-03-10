@@ -1,0 +1,79 @@
+/* sideBar */
+
+.news li[alt="Nasa"] {
+  animation: slideInRight 3s 1 forwards;
+}
+
+.news li[alt="NebulaStar"] {
+  animation: slideInRight 4.5s 1 forwards;
+}
+
+.news li[alt="Astronaut"] {
+  animation: slideInRight 5.5s 1 forwards;
+}
+
+.news li[alt="Molecule"] {
+  animation: slideInRight 6.5s 1 forwards;
+}
+
+.news {
+  width: 30%;
+  overflow: hidden;
+}
+
+.news {
+  div {
+    width: 85%;
+    height: 50px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: all .5s ease-in-out;
+
+
+  }
+
+  li {
+
+    &:hover {
+      background-image: linear-gradient(45deg, rgb(94, 93, 93), transparent);
+
+      div {
+        height: 70px;
+        max-height: 100px;
+        white-space: initial;
+        text-overflow: ellipsis;
+      }
+
+    }
+
+  }
+}
+
+
+.news li {
+  padding: 10px;
+
+  :nth-child(3) {
+    flex: .5;
+  }
+
+}
+
+
+@media screen and (max-width:1024px) {
+  .news {
+    border: 1px solid red;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}

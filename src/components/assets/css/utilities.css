@@ -1,10 +1,12 @@
 .text-lg {
   font-size: 4.5rem;
-  /* 18px */
   line-height: 1.75rem;
-  /* 28px */
 }
-
 .break{
   word-break: break-all;
 }
+
+.white-Text{
+  color: #FFFF;
+}
+

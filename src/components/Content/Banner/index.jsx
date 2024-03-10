@@ -10,7 +10,7 @@ import { footerBg } from '../../Footer/bgMsg'
 import { UFO, Half } from '../../assets';
 import { NasaImages } from './stream';
 
-import '../../assets/css/utilities.css' 
+import '../../assets/css/utilities.css'
 let imgArr = footerBg();
 export default function Banner(props) {
 
@@ -35,7 +35,7 @@ export default function Banner(props) {
     //清除banner組件
     if (startExploration) {
       // console.log('@')
-    
+
       const timer = setTimeout(() => {
         setIsLoading(false)
         PubSub.publish('done', { done: 'ok' })
@@ -43,10 +43,10 @@ export default function Banner(props) {
 
       return () => {
         clearTimeout(timer);
-        
+
       }
     }
-    return ()=>{
+    return () => {
       PubSub.subscribe('slideID', InfoBanner)
     }
   }, [startBtn])
@@ -54,7 +54,7 @@ export default function Banner(props) {
   const InitialBanner = () => {
     return (
 
-      (<div className={`position-fixed  text-center start-50 h-50 exploreBox   ${startExploration ? 'startExploration' : ''}`} style={{ marginTop: "100px", transform: " translate(-50%, 0%)", opacity: ".9", zIndex: "2" }} >
+      (<div className={`position-fixed   text-center start-50 h-50 top-50 exploreBox  translate-middle  ${startExploration ? 'startExploration' : ''}`} style={{ opacity: ".9", zIndex: "2" }} >
         {startExploration ? <Image src={UFO} className="w-25 position-absolute ufo0" fluid alt='UFO' /> : ''}
         <br /><h1 className={`text-lg ${startExploration ? 'Text0' : ''}`} >{`S P A C E`}<FaSpaceShuttle style={{ transform: "rotateZ(-80deg)" }} /><br /></h1>
         <section className="fs-5 text-capitalize">
@@ -90,13 +90,13 @@ export default function Banner(props) {
     }
 
     return (<>
-      <section className='text-center'>
+      <section className='text-center ' >
         <Tab.Container id="list-group-tabs-example" defaultActiveKey="#Mars">
           <Row>
             <Col sm={3} xl={2} md={3} className="baSelect">
               <ListGroup horizontal={'xxl' | 'xl' | 'lg' | 'md'} variant='light' >
                 <ListGroup.Item action href="#Mars" variant='light' >
-                 {info.subTitle}
+                  {info.subTitle}
                 </ListGroup.Item>
                 <ListGroup.Item action href="#link2" variant='light'>
                   Link 2
@@ -106,11 +106,11 @@ export default function Banner(props) {
             <Col sm={9} xl={10} md={9} style={{ zIndex: "3" }} className="ba">
               <Tab.Content>
                 <Tab.Pane eventKey="#Mars" className="text-start fs-4 tabBox">
-                  <p>
-                    {info.descriptions} 
+                  <p className='fs-4'>
+                    {info.descriptions}
                   </p>
                   <div>
-                    <NasaImages currentP={info.subTitle}/>
+                    <NasaImages currentP={info.subTitle} />
                   </div>
 
                 </Tab.Pane>

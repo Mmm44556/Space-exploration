@@ -12,7 +12,7 @@ export const msg1 = () => {
         {
           id: "1",
           Img: N01,
-          Title: "Explicabo, perspiciatis!",
+          Title: "Measuring Neptune's Elusive Radiation Belts Key for Future Exploration",
           subTitle: "",
           date: "25min",
           class: "Nasa"
@@ -20,7 +20,7 @@ export const msg1 = () => {
         {
           id: "2",
           Img: N02,
-          Title: "Quis ut aliquid aliquam33",
+          Title: "Hubble Telescope Observes Massive New Storm Brewing on Neptune",
           subTitle: "",
           date: "Fri",
           class: "NebulaStar"
@@ -28,7 +28,7 @@ export const msg1 = () => {
         {
           id: "3",
           Img: N03,
-          Title: "Eum odit ipsum",
+          Title: "Voyager 2 Data Reveals Neptune's Unusual Atmospheric Chemistry",
           subTitle: "",
           date: "Tues",
           class: "Astronaut"
@@ -36,7 +36,7 @@ export const msg1 = () => {
         {
           id: "4",
           Img: N04,
-          Title: "inventore sunt est",
+          Title: "Exoplanet Discoveries Reshape Our Understanding of Ice Giant Planets Like Neptune",
           subTitle: "",
           date: "Mon",
           class: "Molecule"
@@ -47,7 +47,7 @@ export const msg1 = () => {
         {
           id: "1",
           Img: Mr01,
-          Title: "Explicabo, perspiciatis!",
+          Title: "Did Ancient Mars Have Continents? New Evidence from Perseverance",
           subTitle: "",
           date: "25min",
           class: "Nasa"
@@ -55,7 +55,7 @@ export const msg1 = () => {
         {
           id: "2",
           Img: Mr02,
-          Title: "inventore sunt est",
+          Title: "Mars Sample Return Mission Takes Major Step Forward",
           subTitle: "",
           date: "Mon",
           class: "Molecule"
@@ -93,7 +93,7 @@ export const msg1 = () => {
         {
           id: "1",
           Img: V001,
-          Title: "Explicabo, perspiciatis!",
+          Title: "Venus Express Data Reveals Potential Evidence of Active Volcanism",
           subTitle: "",
           date: "25min",
           class: "Nasa"
@@ -104,7 +104,7 @@ export const msg1 = () => {
         {
           id: "1",
           Img: Mn01,
-          Title: "Explicabo, perspiciatis!",
+          Title: "NASA Picks Locations for Artemis Moon Lander and Future Base",
           subTitle: "",
           date: "25min",
           class: "Nasa"
@@ -112,7 +112,7 @@ export const msg1 = () => {
         {
           id: "2",
           Img: Mn02,
-          Title: "Quis ut aliquid aliquam33",
+          Title: "Bright 'Meteor' Spotted on Moon Was Actually a Rare Meteoroid Impact",
           subTitle: "",
           date: "Fri",
           class: "NebulaStar"
@@ -120,7 +120,7 @@ export const msg1 = () => {
         {
           id: "3",
           Img: Mn03,
-          Title: "Eum odit ipsum",
+          Title: "Lunar Polar Ice Deposits Could Provide Resources for Future Missions",
           subTitle: " ",
           date:"Mon",
           class: "Astronaut"

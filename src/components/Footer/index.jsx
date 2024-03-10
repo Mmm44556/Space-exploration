@@ -28,7 +28,7 @@ export default function Footer() {
   useEffect(() => {
     PubSub.subscribe('done', bannerDone())
     PubSub.subscribe('togglePlanets', togglePlanets)
-    return ()=>{
+    return () => {
       PubSub.unsubscribe(bannerDone())
     }
   }, [])
@@ -45,7 +45,7 @@ export default function Footer() {
       (msg, data) => {
         if (data.done === 'ok') {
           setIsDone(true)
-         
+
         }
 
       }
@@ -83,36 +83,37 @@ export default function Footer() {
   }, [])
 
   return isDone && (
-    <> <Swiper modules={[Keyboard, Navigation, Controller]}
-      className={`mySwiper w-50  position-absolute  start-50 bouncedUp ${isToggle ? "slideDown" : "slideUs"}`}
-      style={{ transform: "translate(-50%)", zIndex: "3" ,bottom:'-50%'}}
-      slidesPerView={3}
-      spaceBetween={30}
-      keyboard={{
-        enabled: true,
-      }}
-      loop={true}
-      loopedSlides={2}
-      grabCursor={true}
-      speed={1000}
-      controller={{ control: controlledSwiper }}>
-      {
-        imgs.map((e) =>
-          <SwiperSlide className="text-center " key={e.id} >
-            <div className="floating" style={{ height: '200px' }}>
-              <LazyLoadImage src={e.img} className="floating  " effect="blur" style={{ width: '30%', WebkitBoxReflect: " right -100px -webkit-linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, .3))" }}
-              />
-            </div>
-          </SwiperSlide>
-        )
-      }
-      <SwiperButtons />
-    </Swiper>
+    <>
+      <Swiper modules={[Keyboard, Navigation, Controller]}
+        className={`mySwiper w-50  position-absolute  start-50 bouncedUp ${isToggle ? "slideDown" : "slideUs"}`}
+        style={{ transform: "translate(-50%)", zIndex: "3", bottom: '-50%' }}
+        slidesPerView={3}
+        spaceBetween={30}
+        keyboard={{
+          enabled: true,
+        }}
+        loop={true}
+        loopedSlides={2}
+        grabCursor={true}
+        speed={1000}
+        controller={{ control: controlledSwiper }}>
+        {
+          imgs.map((e) =>
+            <SwiperSlide className="text-center " key={e.id} >
+              <div className="floating " style={{ height: '200px' }}>
+                <LazyLoadImage src={e.img} className="floating  " effect="blur" style={{ width: '30%', WebkitBoxReflect: " right -100px -webkit-linear-gradient(transparent, transparent 50%, rgba(255, 255, 255, .3))" }}
+                />
+              </div>
+            </SwiperSlide>
+          )
+        }
+        <SwiperButtons />
+      </Swiper>
 
       <Swiper
         modules={[Controller, EffectFade]}
-        className="mySwiper  w-50 h-75 position-absolute  bgSwiper start-100 bottom-50 z-1 "
-        style={{ transform: "translate(-80%,40%)", height: "0%", zIndex: "1" }}
+        className="mySwiper w-50  position-absolute bgSwiper start-100  z-1 "
+        style={{ transform: "translateX(-100%)", zIndex: "1", top: "5%" }}
         slidesPerView={1}
         enabled={false}
         loop={true}
@@ -125,11 +126,13 @@ export default function Footer() {
           bgImgs.map((e) =>
             <SwiperSlide className="text-center  " id={e.id} key={e.id} >
               <LazyLoadImage src={e.img} className=" w-50 " effect="blur"
+                style={{ transform: "translateX(50%)" }}
               />
-              
+
             </SwiperSlide>
           )
         }
-      </Swiper></>
+      </Swiper>
+    </>
   )
 }

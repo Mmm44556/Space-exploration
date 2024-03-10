@@ -34,7 +34,7 @@ const CurrentPlanets = (props) => {
   return (
     <>
       <Swiper modules={[Keyboard, Navigation]}
-        className="mySwiper w-50  position-absolute z-2 start-50  bouncedUp "
+        className="mySwiper w-50  position-absolute z-2 start-50  bouncedUp  "
         style={{ transform: "translate(-50%)" }}
         slidesPerView={views}
         spaceBetween={30}

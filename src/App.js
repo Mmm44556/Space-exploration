@@ -6,7 +6,8 @@ import Nebula from "./components/Nebula";
 import Footer from './components/Footer';
 import NewsList from './components/SideBar/news';
 import SideBar from './components/SideBar';
-import './App.css'
+import './App.css';
+import './components/assets/css/utilities.css'
 // const BComponent = React.lazy(() => import("./components/SideBar"))
 
 
@@ -36,16 +37,11 @@ function App() {
 
 
   return (
-    <div className='App-Container' id="About">
+    <>
       <StrictMode>
         <Navs />
         <Nebula />
         <Content isShow={state.isShow} showAll={() => dispatch({ type: "start", isShow: true })} />
-        {/* {
-          state.isShow ?
-            lazyTime ? <Suspense >
-              <BComponent /></Suspense> : null : <NewsList />
-        } */}
         {
           state.isShow ?
             <SideBar /> : <NewsList />
@@ -60,7 +56,7 @@ function App() {
 
 
 
-    </div>
+    </>
 
   );
 }
