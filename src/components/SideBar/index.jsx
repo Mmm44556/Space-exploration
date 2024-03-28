@@ -6,7 +6,7 @@ import Figure from 'react-bootstrap/Figure';
 import PubSub from 'pubsub-js';
 import { msg1 } from './msg';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
+import style from './style.css.module.css';
 import './style.css'
 export default function SideBar(props) {
   const [isToggleNews, setIsToggleNews] = useState(true);
@@ -29,7 +29,6 @@ export default function SideBar(props) {
   const getNews = (Msg, ID) => {
     let id = ((Number(ID)) - 1);
     let news = msg1();
-    // console.log(id)
     setInfo(() => news[id]);
   }
 
@@ -42,7 +41,7 @@ export default function SideBar(props) {
 
   return (
     <>
-      <ListGroup as="ol" className={`news position-absolute ${isToggleNews ? "slideDown" : "slideUs"}`} style={{ right: "0", zIndex: "3" }} >
+      <ListGroup as="ol" className={`news  position-absolute ${style.planet_news_List} ${isToggleNews ? "slideDown" : "slideUs"}`} style={{ right: "0", zIndex: "3"}} >
 
         {info.map((e, index) => (
 

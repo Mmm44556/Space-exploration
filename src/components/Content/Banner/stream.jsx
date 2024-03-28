@@ -7,8 +7,9 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { MdOutlineZoomOutMap } from "react-icons/md";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
-import PubSub from 'pubsub-js';
 import axios from 'axios';
+import { IoMdRocket } from "react-icons/io";
+import style from '../../../components/assets/styles/animation.module.css';
 const instance = axios.create({
   baseURL: 'https://images-api.nasa.gov',
 })
@@ -102,6 +103,7 @@ export const NasaImages = ({ currentP }) => {
     })
   }
 
+
   return (show ? <div >
     <div className='position-relative ' style={{ height: '45px' }}>
       {initialPage ? <Badge bg="secondary" onClick={prev} as="button">Previous</Badge> : ""}
@@ -137,6 +139,8 @@ export const NasaImages = ({ currentP }) => {
         </Card>)
 
       }
-    </CardGroup></div > : null)
+    </CardGroup></div > : <h1 className="fs-3 text-white text-center position-relative">
+      <IoMdRocket className={style.circle_fly}/>
+      Loading...</h1>)
 
 }

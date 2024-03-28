@@ -7,6 +7,7 @@ import { IoMdPlanet } from "react-icons/io";
 import { BsLinkedin, BsMailbox } from "react-icons/bs";
 import { FaGithub, FaRegNewspaper } from "react-icons/fa";
 import PubSub from 'pubsub-js';
+import style from './style.module.css';
 export default function Navs() {
   const [isActive, setIsActive] = useState(false)
   const [isActive1, setIsActive1] = useState(false)
@@ -24,44 +25,59 @@ export default function Navs() {
 
   return (
     <Navbar expand="lg" variant="dark" fixed="top" className='Nav ms-1 '>
-      <Container>
+      <>
         <NavLink href="/portfolio">
-
-          {/* <Navbar.Brand >
-            <img
-
-              alt="no"
-              src="/logo.svg"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />
-          </Navbar.Brand> */}
         </NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
           </Nav>
 
-          <Nav>
-            <Nav.Link href="#Planets" onClick={togglePlanets} active={isActive}>
-              < IoMdPlanet />
+          <Nav className={style.navigator}>
+            <Nav.Link href="#Planets"
+              onClick={togglePlanets} active={isActive}>
+              <div >
+                < IoMdPlanet />
+              </div>
+              <div style={{ flex: '1' }}></div>
             </Nav.Link>
-            <Nav.Link href="#News" onClick={toggleNews} active={isActive1} >
-              < FaRegNewspaper />
+            <Nav.Link
+
+              href="#News"
+              onClick={toggleNews} active={isActive1} >
+              <div>
+                < FaRegNewspaper />
+              </div>
+              <div style={{ flex: '1' }}></div>
             </Nav.Link>
-            <Nav.Link href="#Linkedin">
-              < BsLinkedin />
+            <Nav.Link
+
+              href="#Linkedin">
+              <div >
+                < BsLinkedin />
+              </div>
+              <div style={{ flex: '1' }}></div>
             </Nav.Link>
-            <Nav.Link href="https://github.com/Mmm44556" target="_blank">
-              <FaGithub />
+            <Nav.Link
+
+              href="https://github.com/Mmm44556"
+              target="_blank">
+              <div >
+                <FaGithub />
+              </div>
+              <div style={{ flex: '1' }}></div>
             </Nav.Link>
-            <Nav.Link href="#Mail">
-              < BsMailbox />
+            <Nav.Link
+              href="#Mail">
+              <div >
+                < BsMailbox />
+              </div>
+              <div style={{ flex: '1' }}></div>
+
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-      </Container>
+      </>
 
     </Navbar >
 

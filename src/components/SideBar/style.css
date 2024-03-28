@@ -1,5 +1,6 @@
 /* sideBar */
 
+
 .news li[alt="Nasa"] {
   animation: slideInRight 3s 1 forwards;
 }
@@ -19,6 +20,8 @@
 .news {
   width: 30%;
   overflow: hidden;
+
+ 
 }
 
 .news {
@@ -62,11 +65,6 @@
 }
 
 
-@media screen and (max-width:1024px) {
-  .news {
-    border: 1px solid red;
-  }
-}
 
 @keyframes slideInRight {
   from {

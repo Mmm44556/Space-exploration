@@ -8,9 +8,12 @@ export default function Content(props) {
   return (
 
     <section className="content" >
-      <div className="solarBox">
-        <span className="solar"></span>
-      </div>
+      {
+        props.isShow ? <div className="solarBox">
+          <span className="solar"></span>
+        </div> : null
+      }
+
       <Container style={{ height: "100dvh", paddingTop: "5rem" }} className="white-Text">
         <Row >
           <Col xs={11} md={11} xl={11}>
@@ -18,10 +21,10 @@ export default function Content(props) {
           </Col>
           <Col xs={1} md={1} xl={1}>
             {!(props.isShow) && <div className="backgroundImg" />}
-          </Col> 
-         
-        </Row> 
-      
+          </Col>
+
+        </Row>
+
       </Container>
 
 

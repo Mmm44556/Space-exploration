@@ -9,8 +9,9 @@ import PubSub from 'pubsub-js';
 import { footerBg } from '../../Footer/bgMsg'
 import { UFO, Half } from '../../assets';
 import { NasaImages } from './stream';
+import style from './style.module.css';
+import '../../assets/css/utilities.css';
 
-import '../../assets/css/utilities.css'
 let imgArr = footerBg();
 export default function Banner(props) {
 
@@ -54,9 +55,13 @@ export default function Banner(props) {
   const InitialBanner = () => {
     return (
 
-      (<div className={`position-fixed   text-center start-50 h-50 top-50 exploreBox  translate-middle  ${startExploration ? 'startExploration' : ''}`} style={{ opacity: ".9", zIndex: "2" }} >
+      (<div
+        className={`position-fixed  text-center start-50 h-50 top-50 exploreBox  translate-middle  ${startExploration ? 'startExploration' : ''}`}
+        style={{ opacity: ".9", zIndex: "2" }} >
         {startExploration ? <Image src={UFO} className="w-25 position-absolute ufo0" fluid alt='UFO' /> : ''}
-        <br /><h1 className={`text-lg ${startExploration ? 'Text0' : ''}`} >{`S P A C E`}<FaSpaceShuttle style={{ transform: "rotateZ(-80deg)" }} /><br /></h1>
+        <br /><h1 className={`text-lg text-nowrap  ${startExploration ? 'Text0' : ''}`} >
+          {`S P A C E`}<FaSpaceShuttle style={{ transform: "rotateZ(-80deg)" }} /><br />
+        </h1>
         <section className="fs-5 text-capitalize">
           {!startExploration ? <Image src={UFO} className='w-25 position-absolute ufo1' fluid alt='UFO' /> : ''}
           <span className={`${startExploration ? 'Text1' : ''}`}>During the time that has passed since the launching of the first artificial satellite in 1957, astronauts</span>
@@ -65,13 +70,15 @@ export default function Banner(props) {
         {startBtn && (<Button variant="warning" className="startBtn" size="lg" onClick={explore}>START<FaWpexplorer /></Button>)}
 
 
-        <div className="circleBox">
+        <div className={`circleBox `}>
           <div className="circle  border">.</div>
           <div className="circle2  border">.</div>
           <div className="circle3  border">.</div>
         </div>
 
-        <Image src={Half} fluid className="position-fixed opacity-50  " style={{ left: "-60%", top: "0%", width: "60%" }} />;
+        <Image src={Half} fluid 
+          className={`position-fixed opacity-50 ${style.rest_planet}`} 
+        style={{ left: "-60%", top: "0%", width: "60%" }} />;
 
 
 
@@ -98,9 +105,6 @@ export default function Banner(props) {
                 <ListGroup.Item action href="#Mars" variant='light' >
                   {info.subTitle}
                 </ListGroup.Item>
-                <ListGroup.Item action href="#link2" variant='light'>
-                  Link 2
-                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col sm={9} xl={10} md={9} style={{ zIndex: "3" }} className="ba">
@@ -114,7 +118,7 @@ export default function Banner(props) {
                   </div>
 
                 </Tab.Pane>
-                <Tab.Pane eventKey="#link2">Tab pane content 2</Tab.Pane>
+
               </Tab.Content>
             </Col>
           </Row>

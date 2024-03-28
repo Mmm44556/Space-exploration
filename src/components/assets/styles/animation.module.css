@@ -1,0 +1,27 @@
+.circle_fly {
+  animation: fly 5s linear 0s infinite;
+  position: absolute;
+  transform: rotateZ(90deg);
+}
+
+@keyframes fly {
+  0% {
+    top: 0%;
+    left: 30%;
+    transform: rotateZ(90deg) scale(1);
+
+  }
+
+  75% {
+    top: 50%;
+    left: 60%;
+    transform: rotateZ(90deg) scale(4);
+  }
+
+  100% {
+    top: 0%;
+    left: 120%;
+    opacity: 0.2;
+    transform: rotateZ(90deg) scale(1);
+  }
+}
