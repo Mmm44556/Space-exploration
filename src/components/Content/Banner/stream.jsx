@@ -10,10 +10,7 @@ import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 import axios from 'axios';
 import { IoMdRocket } from "react-icons/io";
 import style from '../../../components/assets/styles/animation.module.css';
-const instance = axios.create({
-  baseURL: 'https://images-api.nasa.gov',
-  url: 'https://images-api.nasa.gov'
-})
+
 export const NasaImages = ({ currentP }) => {
 
   const [isLoading, setIsLoading] = useState(null)
@@ -49,7 +46,7 @@ export const NasaImages = ({ currentP }) => {
   };
   //掛載初始化
   useEffect(() => {
-    instance['get'](`/search?q=${initialUrl}&media_type=image&page=1&page_size=3&year_start=1920&year_end=2003`).then((result) => {
+    axios.get(`https://images-api.nasa.gov/search?q=${initialUrl}&media_type=image&page=1&page_size=3&year_start=1920&year_end=2003`).then((result) => {
       result.data.collection.items.forEach((e) => e.isActive = false)
       setImg(() => result.data.collection)
       setIsLoading(() => [...result.data.collection.items]);
@@ -61,7 +58,7 @@ export const NasaImages = ({ currentP }) => {
   //下一頁圖片
   const next = useCallback(() => {
     let nextUrl = img.links[page].href;
-    instance['get'](nextUrl).then((result) => {
+    axios.get(nextUrl).then((result) => {
       //取得資料時page +1
       result.data.collection.items.forEach((e) => e.isActive = false)
       setImg(() => result.data.collection)
@@ -74,7 +71,7 @@ export const NasaImages = ({ currentP }) => {
   //上一頁圖片
   const prev = useCallback(() => {
     let nextUrl = img.links[0].href;
-    instance['get'](nextUrl).then((result) => {
+    axios.get(nextUrl).then((result) => {
       result.data.collection.items.forEach((e) => e.isActive = false)
       setImg(() => result.data.collection)
       setIsLoading(() => [...result.data.collection.items]);
