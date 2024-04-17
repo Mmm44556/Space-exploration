@@ -45,10 +45,10 @@ export const NasaImages = ({ currentP }) => {
     );
   };
   //掛載初始化
-  useEffect( () => {
-    fetch(`https://images-api.nasa.gov/search?q=${initialUrl}&media_type=image&page=1&page_size=3&year_start=1920&year_end=2003`).then(async(res) => {
-const a= await res.json();
-      const result = {data:a}
+  useEffect(() => {
+    fetch(`https://images-api.nasa.gov/search?q=${initialUrl}&media_type=image&page=1&page_size=3&year_start=1920&year_end=2003`).then(async (res) => {
+      const a = await res.json();
+      const result = { data: a }
 
       result.data.collection.items.forEach((e) => e.isActive = false)
       setImg(() => result.data.collection)
@@ -61,7 +61,8 @@ const a= await res.json();
   //下一頁圖片
   const next = useCallback(() => {
     let nextUrl = img.links[page].href;
-    fetch(nextUrl).then(async(res) => {
+
+    fetch(nextUrl.replace('http', 'https')).then(async (res) => {
       const b = await res.json();
       const result = { data: b }
       //取得資料時page +1
@@ -76,7 +77,9 @@ const a= await res.json();
   //上一頁圖片
   const prev = useCallback(() => {
     let nextUrl = img.links[0].href;
-    fetch(nextUrl).then(async(res) => {
+
+
+    fetch(nextUrl.replace('http', 'https')).then(async (res) => {
       const c = await res.json();
       const result = { data: c }
       result.data.collection.items.forEach((e) => e.isActive = false)
