@@ -20,7 +20,7 @@ export const NasaImages = ({ currentP }) => {
   const [initialPage, setInitialPage] = useState(0);
   const [initialUrl, setInitialUrl] = useState(currentP)
   const divRef = useRef(null);
-  
+
   //放大圖片
   const OriginImg = ({ url }) => {
     return (
@@ -45,8 +45,11 @@ export const NasaImages = ({ currentP }) => {
     );
   };
   //掛載初始化
-  useEffect(() => {
-    axios.get(`https://images-api.nasa.gov/search?q=${initialUrl}&media_type=image&page=1&page_size=3&year_start=1920&year_end=2003`).then((result) => {
+  useEffect( () => {
+    fetch(`https://images-api.nasa.gov/search?q=${initialUrl}&media_type=image&page=1&page_size=3&year_start=1920&year_end=2003`).then(async(res) => {
+const a= await res.json();
+      const result = {data:a}
+
       result.data.collection.items.forEach((e) => e.isActive = false)
       setImg(() => result.data.collection)
       setIsLoading(() => [...result.data.collection.items]);
@@ -58,7 +61,9 @@ export const NasaImages = ({ currentP }) => {
   //下一頁圖片
   const next = useCallback(() => {
     let nextUrl = img.links[page].href;
-    axios.get(nextUrl).then((result) => {
+    fetch(nextUrl).then(async(res) => {
+      const b = await res.json();
+      const result = { data: b }
       //取得資料時page +1
       result.data.collection.items.forEach((e) => e.isActive = false)
       setImg(() => result.data.collection)
@@ -71,7 +76,9 @@ export const NasaImages = ({ currentP }) => {
   //上一頁圖片
   const prev = useCallback(() => {
     let nextUrl = img.links[0].href;
-    axios.get(nextUrl).then((result) => {
+    fetch(nextUrl).then(async(res) => {
+      const c = await res.json();
+      const result = { data: c }
       result.data.collection.items.forEach((e) => e.isActive = false)
       setImg(() => result.data.collection)
       setIsLoading(() => [...result.data.collection.items]);
@@ -108,7 +115,7 @@ export const NasaImages = ({ currentP }) => {
       <Badge bg="secondary" className='position-absolute end-0' onClick={next} as="button">Next</Badge>
 
     </div>
-    <CardGroup  className='cardGap'>
+    <CardGroup className='cardGap'>
       {
         isLoading.map((e, index) => <Card className="w-100 lazyBox" style={{ height: "300px", backgroundColor: "unset" }} key={e.data[0].nasa_id}>
           <LazyLoadImage effect='blur' src={e.links[0].href} alt={e.data[0].title} className="w-100 h-50  border rounded" style={{ objectFit: "contain", cursor: "pointer" }}
@@ -138,7 +145,7 @@ export const NasaImages = ({ currentP }) => {
 
       }
     </CardGroup></div > : <h1 className="fs-3 text-white text-center position-relative">
-      <IoMdRocket className={style.circle_fly}/>
-      Loading...</h1>)
+    <IoMdRocket className={style.circle_fly} />
+    Loading...</h1>)
 
 }
