@@ -12,9 +12,10 @@ import { IoMdRocket } from "react-icons/io";
 import style from '../../../components/assets/styles/animation.module.css';
 const instance = axios.create({
   baseURL: 'https://images-api.nasa.gov',
+  url: 'https://images-api.nasa.gov'
 })
 export const NasaImages = ({ currentP }) => {
-  // console.log(currentP)
+
   const [isLoading, setIsLoading] = useState(null)
   const [show, setShow] = useState(false)
   const [img, setImg] = useState(null)
@@ -22,7 +23,7 @@ export const NasaImages = ({ currentP }) => {
   const [initialPage, setInitialPage] = useState(0);
   const [initialUrl, setInitialUrl] = useState(currentP)
   const divRef = useRef(null);
-
+  
   //放大圖片
   const OriginImg = ({ url }) => {
     return (
