@@ -38,7 +38,7 @@ export default function Footer() {
   }
   //發送當前星球的id讓banner資訊替換
   const bannerDone = (slide) => {
-    if (slide != undefined) {
+    if (slide !== undefined) {
       PubSub.publish('slideID', slide.id)
     }
     return (

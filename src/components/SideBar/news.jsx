@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Toast from 'react-bootstrap/Toast';
 import ToastContainer from 'react-bootstrap/ToastContainer';
 import { GiAstronautHelmet } from "react-icons/gi";
-import style from './style.css.module.css';
+import './style.css'
 const NewsList = () => {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
@@ -10,7 +10,7 @@ const NewsList = () => {
   return (
     <>
       <aside
-        className={`position-absolute end-0  w-25 hint ${style.start_news_List}`}>
+        className={`position-fixed end-0  w-25 hint start_news_List`}>
         <div
           aria-live="polite"
           aria-atomic="true"

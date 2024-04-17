@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { NavLink } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { IoMdPlanet } from "react-icons/io";
@@ -17,9 +16,14 @@ export default function Navs() {
     setIsActive((v) => !v)
 
   }
+
   const toggleNews = () => {
-    PubSub.publish('toggleNews', '')
-    setIsActive1((v) => !v)
+
+    setIsActive1((v) => {
+
+      PubSub.publish('toggleNews', !v)
+      return !v
+    })
 
   }
 
