@@ -85,7 +85,7 @@ export default function Footer() {
   return isDone && (
     <>
       <Swiper modules={[Keyboard, Navigation, Controller]}
-        className={`mySwiper w-50  position-absolute  start-50 bouncedUp ${isToggle ? "slideDown" : "slideUs"}`}
+        className={`mySwiper w-50  position-fixed  start-50 bouncedUp planetRWD ${isToggle ? "slideDown" : "slideUs"}`}
         style={{ transform: "translate(-50%)", zIndex: "3", bottom: '-50%' }}
         slidesPerView={3}
         spaceBetween={30}

@@ -51,8 +51,8 @@ export default function Navs() {
               <div style={{ flex: '1' }}></div>
             </Nav.Link>
             <Nav.Link
-
-              href="#Linkedin">
+              target="_blank"
+              href="https://www.linkedin.com/in/shung-you-mai-5917b9274/">
               <div >
                 < BsLinkedin />
               </div>

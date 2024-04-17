@@ -41,7 +41,7 @@ export default function SideBar(props) {
 
   return (
     <>
-      <ListGroup as="ol" className={`news  position-absolute ${style.planet_news_List} ${isToggleNews ? "slideDown" : "slideUs"}`} style={{ right: "0", zIndex: "3"}} >
+      <ListGroup as="ol" className={`news   position-fixed ${style.planet_news_List} ${isToggleNews ? "slideDown" : "slideUs"}`} style={{ right: "0", zIndex: "3"}} >
 
         {info.map((e, index) => (
 

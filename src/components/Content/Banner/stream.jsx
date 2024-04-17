@@ -110,7 +110,7 @@ export const NasaImages = ({ currentP }) => {
       <Badge bg="secondary" className='position-absolute end-0' onClick={next} as="button">Next</Badge>
 
     </div>
-    <CardGroup  >
+    <CardGroup  className='cardGap'>
       {
         isLoading.map((e, index) => <Card className="w-100 lazyBox" style={{ height: "300px", backgroundColor: "unset" }} key={e.data[0].nasa_id}>
           <LazyLoadImage effect='blur' src={e.links[0].href} alt={e.data[0].title} className="w-100 h-50  border rounded" style={{ objectFit: "contain", cursor: "pointer" }}
