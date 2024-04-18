@@ -9,7 +9,7 @@ const NewsList = () => {
 
   return (
     <>
-      <aside
+      {show && show1 ? null : <aside
         className={`position-fixed end-0  w-25 hint start_news_List`}>
         <div
           aria-live="polite"
@@ -36,7 +36,8 @@ const NewsList = () => {
             </Toast>
           </ToastContainer>
         </div>
-      </aside>
+      </aside>}
+
     </>
   )
 
