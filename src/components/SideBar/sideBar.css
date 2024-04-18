@@ -1,5 +1,5 @@
 .start_news_List {
-  z-index: 1000;
+  z-index: 100;
   bottom: 0;
 
   @media (max-width:768px) {

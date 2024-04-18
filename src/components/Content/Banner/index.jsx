@@ -57,7 +57,7 @@ export default function Banner(props) {
 
       (<div
         className={`position-fixed  text-center start-50 h-50 top-50 exploreBox  translate-middle  ${startExploration ? 'startExploration' : ''}`}
-        style={{ opacity: ".9", zIndex: "2" }} >
+        style={{ opacity: ".9", zIndex: "1000" }} >
         {startExploration ? <Image src={UFO} className="w-25 position-absolute ufo0" fluid alt='UFO' /> : ''}
         <br /><h1 className={`text-lg text-nowrap  ${startExploration ? 'Text0' : ''}`} >
           {`S P A C E`}<FaSpaceShuttle style={{ transform: "rotateZ(-80deg)" }} /><br />
@@ -76,9 +76,9 @@ export default function Banner(props) {
           <div className="circle3  border">.</div>
         </div>
 
-        <Image src={Half} fluid 
-          className={`position-fixed opacity-50 ${style.rest_planet}`} 
-        style={{ left: "-60%", top: "0%", width: "60%" }} />;
+        <Image src={Half} fluid
+          className={`position-fixed opacity-50 ${style.rest_planet}`}
+          style={{ left: "-60%", top: "0%", width: "60%" }} />;
 
 
 
